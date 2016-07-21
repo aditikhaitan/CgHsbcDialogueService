@@ -1,0 +1,9 @@
+applications:
+- path: build/HSBCDialog.war
+  memory: 512M
+  instances: 1
+  domain: au-syd.mybluemix.net
+  name: CgHsbcDialogService
+  host: aditiChatApp-CgHsbcDialog
+  disk_quota: 1024M
+  
