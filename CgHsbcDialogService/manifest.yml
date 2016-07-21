@@ -1,6 +1,6 @@
 applications:
 - path: build/HSBCDialog.war
-  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  buildpack: https://github.com/cloudfoundry/java-buildpack
   memory: 512M
   instances: 1
   domain: api.ng.mybluemix.net
