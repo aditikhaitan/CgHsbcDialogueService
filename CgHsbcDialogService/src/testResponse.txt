@@ -1,0 +1,10 @@
+{
+			  "client_id": 3704356,
+			  "confidence": -1.0,
+			  "dialogId": "133eed7f-5220-49ab-9a72-603a6172bee8",
+			  "conversation_id": 3589773,
+			  "input": "Hi how are you?",
+			  "response": [
+			    "Hello, welcome to Mike’s Pizza"
+			  ]
+			}
