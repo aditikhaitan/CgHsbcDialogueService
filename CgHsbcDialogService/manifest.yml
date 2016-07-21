@@ -3,7 +3,7 @@ applications:
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   memory: 512M
   instances: 1
-  domain: au-syd.mybluemix.net
+  domain: api.ng.mybluemix.net
   name: CgHsbcDialogService
   host: aditiChatApp-CgHsbcDialog
   disk_quota: 1024M
