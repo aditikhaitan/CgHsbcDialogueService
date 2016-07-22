@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="HSBCAPP" basedir="." default="build">
+<project name="CgHsbcDialogService" basedir="." default="build">
     <property file="build.properties"/>
     <property name="src.dir" value="src" />
     <property name="web.dir" value="WebContent" />
-    <property name="name" value="HSBCDialog" />
+    <property name="name" value="CgHsbcDialogService" />
     <property name="build.dir" value="${basedir}/build"/>
 	
 	<target name="init">
