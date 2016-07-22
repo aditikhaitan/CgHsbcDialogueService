@@ -35,9 +35,8 @@
 
     <target name="compile" depends="init" description="Compile java files and place them webContents/web-inf/">
     	<mkdir dir="${build.dir}/classes"/>
-        <javac destdir="${build.dir}/classes" failonerror="true">
-            <src path="${src.dir}"/>
-            <classpath refid="project-classpath"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}/classes" executable="C:\Program Files\Java\jdk1.8.0_101\bin\javac" compiler="javac1.8" failonerror="true">
+           
         </javac>
     </target>
 
