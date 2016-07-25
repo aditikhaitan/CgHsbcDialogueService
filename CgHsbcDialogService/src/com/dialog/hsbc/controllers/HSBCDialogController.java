@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dialog.hsbc.dto.DialogDTO;
 import com.dialog.hsbc.services.HSBCDialogService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 @Controller
 public class HSBCDialogController {
@@ -23,12 +25,12 @@ public class HSBCDialogController {
 	@Autowired
 	HSBCDialogService hsbcDialogService;
 	
-	@RequestMapping(value="clientVerify",method=RequestMethod.GET)
-	@ResponseBody
-	public String helloWorld(HttpServletRequest request, HttpServletResponse response)
+	public String clientMsg(
+		    String clientMSG,
+			HttpServletRequest request,
+			HttpServletResponse response)
 	{
-		String clientMSG = request.getParameter("clientMSG");
-		System.out.println(request.getQueryString()+"............"+request.getContextPath());
+		System.out.println(clientMSG);
 		ObjectMapper mapper = new ObjectMapper();
 		DialogDTO dialogDTO = new DialogDTO();
 		try
@@ -41,9 +43,16 @@ public class HSBCDialogController {
 			e1.printStackTrace();
 		}
 		System.out.println(clientMSG);
-		DialogDTO responseDTO = hsbcDialogService.getNextDialog(dialogDTO);
 		String responseMSG="";
+		/*if(clientMSG.equalsIgnoreCase("\"input\":\"\"")){
+			responseMSG="welcome";
+		}
+		else{*/
+		DialogDTO responseDTO = hsbcDialogService.getNextDialog(dialogDTO);
+			//responseMSG="hi";
+		
 		try {
+			
 			responseMSG = mapper.writeValueAsString(responseDTO);
 		} catch (JsonProcessingException e1) {
 			e1.printStackTrace();
@@ -75,4 +84,32 @@ public class HSBCDialogController {
 	protected void iamAlive(){
 		System.out.println("inside controller");
 	}
+	
+	
+	@RequestMapping(value="clientVerify",method=RequestMethod.GET)
+	@ResponseBody
+	public String goGet(
+			@RequestParam("clientMSG") String clientMSG,
+			HttpServletRequest request,
+			HttpServletResponse response)
+	{
+		String resposeTxt= clientMsg(clientMSG,request,response);
+		System.out.println("response text: "+resposeTxt);
+		Gson gson=new Gson();
+		 String json ="";
+			 json = gson.toJson(resposeTxt);
+		System.out.println(json);
+		return resposeTxt;
+	}
+	
+	
+	@RequestMapping(value="clientResponse",method=RequestMethod.POST)
+	@ResponseBody
+	public String goPost(@RequestParam("clientMSG") String clientMSG,
+			HttpServletRequest request,
+			HttpServletResponse response)
+	{
+		return clientMsg(clientMSG,request,response);
+	}
+	
 }
