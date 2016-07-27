@@ -44,13 +44,13 @@ public class HSBCDialogService {
 		
 		if(dialogDTO.getClient_id()!=null)
 		{
-			try {
+			/*try {
 				Thread.sleep(5000);
 			}
 			catch (InterruptedException e)
 			{
 				e.printStackTrace();
-			}
+			}*/
 			params.put(DialogService.CLIENT_ID, dialogDTO.getClient_id());
 		}
 		if(dialogDTO.getConversation_id()!=null)
