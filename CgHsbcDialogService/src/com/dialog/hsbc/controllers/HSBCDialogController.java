@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dialog.hsbc.dao.HSBCDialogdao;
 import com.dialog.hsbc.dto.DialogDTO;
 import com.dialog.hsbc.services.HSBCDialogService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -24,6 +25,9 @@ public class HSBCDialogController {
 
 	@Autowired
 	HSBCDialogService hsbcDialogService;
+	
+	@Autowired
+	HSBCDialogdao hSBCDialogdao;
 	
 	public String clientMsg(
 		    String clientMSG,
@@ -49,7 +53,19 @@ public class HSBCDialogController {
 		}
 		else{*/
 		DialogDTO responseDTO = hsbcDialogService.getNextDialog(dialogDTO);
+		
 			//responseMSG="hi";
+		if ((responseDTO.getResponse())[0].equals("RS1001"))
+		{
+			System.out.println("inside my code");
+			dialogDTO=responseDTO;
+			int k=0;
+			k=hSBCDialogdao.getAnnualLeaveBalance();
+System.out.println(k);
+			dialogDTO.setInput("RP1001,"+k);
+
+			responseDTO = hsbcDialogService.getNextDialog(dialogDTO);
+		}
 		
 		try {
 			
