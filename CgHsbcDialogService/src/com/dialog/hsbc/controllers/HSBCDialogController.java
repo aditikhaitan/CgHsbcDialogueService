@@ -53,7 +53,7 @@ public class HSBCDialogController {
 		DialogDTO responseDTO = hsbcDialogService.getNextDialog(dialogDTO);
 		
 			//responseMSG="hi";
-		if ((responseDTO.getResponse())[0].equals("RS1001"))
+		if ((responseDTO.getResponse())[0].contains("RS1001"))
 		{
 			System.out.println("inside my code");
 			dialogDTO=responseDTO;
