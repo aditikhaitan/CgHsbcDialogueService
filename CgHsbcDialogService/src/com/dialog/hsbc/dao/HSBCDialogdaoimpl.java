@@ -9,11 +9,6 @@ import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
-import com.dialog.hsbc.dao.HSBCDialogdao;
-import com.dialog.hsbc.utils.JDBCDaoException;
-import com.dialog.hsbc.utils.ServiceLocator;
-import com.dialog.hsbc.utils.ServiceLocatorException;
-
 
 @Repository("hSBCDialogdao")
 public class HSBCDialogdaoimpl implements HSBCDialogdao{
@@ -27,14 +22,14 @@ public class HSBCDialogdaoimpl implements HSBCDialogdao{
 
 public HSBCDialogdaoimpl()  {
 		
-		try {
+		/*try {
 			dataSource=ServiceLocator.getDataSource("jdbc/VIMDataSource");
 			
 		} catch (ServiceLocatorException e) {
 			
 			System.out.println("Container Service not available");
 		}//catch block closed
-		
+*/		
 	} //method closed
 	
 	
@@ -43,12 +38,13 @@ public HSBCDialogdaoimpl()  {
 		// TODO Auto-generated method stub
 		
 		System.out.println("inside annualleave");
-		String selectQuery = "select AL_BALANCE from LEAVE_MASTER where Emp_Id=?";
+		/*String selectQuery = "select AL_BALANCE from LEAVE_MASTER where Emp_Id=?";*/
 
 		int balance;
-		PreparedStatement selectStatement = null;
-				ResultSet result = null;
-				try {
+		/*PreparedStatement selectStatement = null;
+				ResultSet result = null;*/
+				balance=10;
+				/*try {
 					try {
 						connection =  dataSource.getConnection();
 						connection.setAutoCommit(true);
@@ -60,18 +56,18 @@ public HSBCDialogdaoimpl()  {
 						result.next();
 						System.out.println("outout of query" + result.getInt("al_balance"));
 						 balance = result.getInt("al_balance");
-						
+						balance=10;
 						} finally {
 								
 							connection.close();
 							
 						}
 				} catch (SQLException e) {
-
-					throw new JDBCDaoException("SQL error while excecuting query: "
-							+ selectQuery, e);
+//
+//					throw new JDBCDaoException("SQL error while excecuting query: "
+//							+ selectQuery, e);
 				}
-				
+				*/
 		
 		
 				return balance;
