@@ -1,11 +1,6 @@
 package com.dialog.hsbc.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
@@ -13,11 +8,11 @@ import org.springframework.stereotype.Repository;
 @Repository("hSBCDialogdao")
 public class HSBCDialogdaoimpl implements HSBCDialogdao{
 	
-	private DataSource dataSource;
+	/*private DataSource dataSource;
 	private Connection connection;
 	PreparedStatement selectStatement;
 	private String selectQuery;
-	private ResultSet result ;
+	private ResultSet result ;*/
 	
 
 public HSBCDialogdaoimpl()  {
